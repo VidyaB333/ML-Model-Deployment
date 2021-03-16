@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <style> body {background-color: powderblue; text-align:center;}
+          table, th, td {border: 2px solid black; border-collapse: collapse}
+          th, td {padding: 15px;} </style>
+
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<h2>Details of Machine learning model</h2>
+<br>
+   <p> This model is used to predict whether the given person can purchase car or not</p>
+   <p> Sample data considered</p>
+
+        <table style="text-align:center;width:80%">
+            <tr>
+                <th>UserID</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Estimated Salary</th>
+                <th>Purchased</th>
+            </tr>
+            <tr>				1
+                <td>15694829</td>
+                <td>Female</td>
+                <td>32</td>
+                <td>150000</td>
+                <td>1</td>
+            </tr>
+            <tr>				1
+                <td>15624510</td>
+                <td>Male</td>
+                <td>19</td>
+                <td>19000</td>
+                <td>0</td>
+            </tr>
+        </table>
+
+
+ <div class="login">
+    {% for i in range(1) %}
+        <br>
+    {% endfor %}
+	<h1 style="text-align:center;">Purchase of car analysis</h1>
+    <br>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form style="font-size:160%; text-align:center;" action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="userid" placeholder="UserID" required="required" />
+        <input type="text" name="gender" placeholder="Gender" required="required" />
+	    <input type="text" name="age" placeholder="Age" required="required" />
+	    <input type="text" name="salary" placeholder="Estimated salary" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+   <br>
+   <br>
+   <pr style="text-align:center; font-size:160%">{{ prediction_text }}</pr>
+
+ </div>
+
+
+</body>
+</html>
